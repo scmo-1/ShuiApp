@@ -18,7 +18,7 @@ export const handler = async (event) => {
     }
     const { name, note } = body;
 
-    if (name === undefined || note === undefined) {
+    if (!name || !note) {
       return response(400, "Both name and note must be provided");
     }
     if (name.trim().length < 2) {
@@ -41,7 +41,7 @@ export const handler = async (event) => {
         name: { S: name },
         note: { S: note },
         createdAt: { S: new Date().toISOString() },
-        noteId: noteId,
+        noteId: { S: noteId },
       },
     });
 
@@ -54,6 +54,13 @@ export const handler = async (event) => {
       }),
     };
   } catch (error) {
-    console.error("Post new note error", error.message);
+    console.error("Post new note error", error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        message: "Internal Server Error",
+        error: error.message,
+      }),
+    };
   }
 };
