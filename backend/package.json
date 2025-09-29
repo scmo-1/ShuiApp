@@ -5,7 +5,8 @@
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "serverless offline"
+    "dev": "serverless offline",
+    "offline": "nodemon --watch functions --ext js,json --exec 'sls offline'"
   },
   "keywords": [],
   "author": "scmo",
@@ -15,6 +16,7 @@
     "@aws-sdk/client-dynamodb": "^3.896.0",
     "@aws-sdk/lib-dynamodb": "^3.896.0",
     "dotenv": "^17.2.2",
+    "nodemon": "^3.1.10",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
