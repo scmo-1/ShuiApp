@@ -16,15 +16,15 @@ export const handler = async (event) => {
     } catch (error) {
       return response(400, "Invalid JSON format");
     }
-    const { name, note } = body;
+    const { username, note } = body;
 
-    if (!name || !note) {
+    if (!username || !note) {
       return response(400, "Both name and note must be provided");
     }
-    if (name.trim().length < 2) {
+    if (username.trim().length < 2) {
       return response(400, "Name must be at least 2 characters long");
     }
-    if (!nameRegex.test(name)) {
+    if (!nameRegex.test(username)) {
       return response(400, "Note contains invalid characters");
     }
     if (note.trim().length < 3) {
@@ -38,7 +38,7 @@ export const handler = async (event) => {
       Item: {
         pk: { S: "NOTE#" },
         sk: { S: `ID#${noteId}` },
-        name: { S: name },
+        username: { S: username },
         note: { S: note },
         createdAt: { S: new Date().toISOString() },
         noteId: { S: noteId },

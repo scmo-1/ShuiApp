@@ -35,7 +35,7 @@ functions:
     handler: functions/getNoteByUser/index.handler
     events:
       - httpApi:
-          path: /api/notes/{userId}
+          path: /api/notes/{username}
           method: GET
 
   editNote:
@@ -64,7 +64,7 @@ resources:
           - AttributeName: sk
             KeyType: RANGE
         GlobalSecondaryIndexes:
-          - IndexName: userIndex
+          - IndexName: usernameIndex
             KeySchema:
               - AttributeName: username
                 KeyType: HASH
