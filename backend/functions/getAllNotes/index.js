@@ -1,6 +1,7 @@
 import { QueryCommand } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 import { dbClient } from "../../services/db.js";
+import { response } from "../../utils/response.js";
 
 export const handler = async (event) => {
   try {
@@ -15,13 +16,7 @@ export const handler = async (event) => {
     const result = await dbClient.send(command);
     const notes = result.Items.map((note) => unmarshall(note));
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        notes: notes,
-        message: "success",
-      }),
-    };
+    return response(200, notes);
   } catch (error) {
     console.error("Error in getAllNotes:", error.message);
   }
