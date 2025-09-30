@@ -6,9 +6,6 @@ import { unmarshallItems } from "../../utils/unmarshallItems.js";
 export const handler = async (event) => {
   try {
     const { username } = event.pathParameters;
-    if (!username) {
-      return response(400, "Username must be provided");
-    }
 
     const command = new QueryCommand({
       TableName: "ShuiNotesTable",
