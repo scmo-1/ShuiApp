@@ -42,7 +42,7 @@ functions:
     handler: functions/getNoteByUser/index.handler
     events:
       - httpApi:
-          path: /api/notes/{username}
+          path: /api/notes/user/{username}
           method: GET
 
   editNote:

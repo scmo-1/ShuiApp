@@ -6,9 +6,7 @@ import { response } from "../../utils/response.js";
 export const handler = async (event) => {
   try {
     const { noteId } = event.pathParameters;
-    if (!noteId) {
-      return response(400, "No noteId provided");
-    }
+
     const command = new QueryCommand({
       TableName: "ShuiNotesTable",
       KeyConditionExpression: "pk = :pk AND sk = :sk",
