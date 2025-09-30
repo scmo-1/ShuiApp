@@ -1,7 +1,7 @@
 import { QueryCommand } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "../../services/db.js";
 import { response } from "../../utils/response.js";
-import { unmarshall } from "@aws-sdk/util-dynamodb";
+import { unmarshallItems } from "../../utils/unmarshallItems.js";
 
 export const handler = async (event) => {
   try {
@@ -24,7 +24,7 @@ export const handler = async (event) => {
       return response(404, "No notes found for the given username");
     }
 
-    const notes = result.Items.map((note) => unmarshall(note));
+    const notes = unmarshallItems(result.Items);
 
     return {
       statusCode: 200,

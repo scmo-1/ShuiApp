@@ -1,5 +1,5 @@
 import { QueryCommand } from "@aws-sdk/client-dynamodb";
-import { unmarshall } from "@aws-sdk/util-dynamodb";
+import { unmarshallItems } from "../../utils/unmarshallItems.js";
 import { dbClient } from "../../services/db.js";
 import { response } from "../../utils/response.js";
 
@@ -14,7 +14,7 @@ export const handler = async (event) => {
     });
 
     const result = await dbClient.send(command);
-    const notes = result.Items.map((note) => unmarshall(note));
+    const notes = unmarshallItems(result.Items);
 
     return response(200, notes);
   } catch (error) {
