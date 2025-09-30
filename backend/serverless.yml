@@ -24,6 +24,13 @@ functions:
           path: /api/notes
           method: GET
 
+  getNoteByNoteId:
+    handler: functions/getNoteByNoteId/index.handler
+    events:
+      - httpApi:
+          path: /api/notes/{noteId}
+          method: GET
+
   postNote:
     handler: functions/postNote/index.handler
     events:
