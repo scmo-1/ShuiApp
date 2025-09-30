@@ -26,13 +26,7 @@ export const handler = async (event) => {
 
     const notes = unmarshallItems(result.Items);
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        message: "Success",
-        data: notes,
-      }),
-    };
+    return response(200, "Notes fetched successfully", notes);
   } catch (error) {
     console.error("get not by user error", error);
     return {

@@ -9,14 +9,14 @@ export const handler = async (event) => {
       TableName: "ShuiNotesTable",
       KeyConditionExpression: "pk = :pk",
       ExpressionAttributeValues: {
-        ":pk": { S: "NOTES#" },
+        ":pk": { S: "NOTE#" },
       },
     });
 
     const result = await dbClient.send(command);
     const notes = unmarshallItems(result.Items);
 
-    return response(200, notes);
+    return response(200, "Notes fetched successfully", notes);
   } catch (error) {
     console.error("Error in getAllNotes:", error.message);
   }

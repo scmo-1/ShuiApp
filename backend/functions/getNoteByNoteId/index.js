@@ -18,11 +18,15 @@ export const handler = async (event) => {
       },
     });
 
-    const result = await dbClient(command);
-    if (result.Count === 0) {
+    const result = await dbClient.send(command);
+
+    if (result.Count < 1) {
+      return response(404, "Note with provided ID not found");
     }
 
-    const note = unmarshallItems(result.items);
+    const note = unmarshallItems(result.Items);
+
+    return response(200, "Notes fetched successfully", note);
   } catch (error) {
     console.error("get note by noteId error:", error);
     return {
