@@ -1,11 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
 
 function Layout() {
   return (
     <>
-      <div>Header</div>
-      <main>
+      <Header />
+      <main className="pt-25 px-3  flex flex-col items-center min-h-screen">
         <Outlet />
       </main>
     </>
