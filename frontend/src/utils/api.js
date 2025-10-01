@@ -8,3 +8,23 @@ export const getAllNotes = async () => {
   const response = await api.get("/api/notes");
   return response.data;
 };
+
+export const getNoteById = async (query) => {
+  const response = await api.get(`/api/note/${query}`);
+  return response.data;
+};
+
+export const getNoteByName = async (query) => {
+  const response = await api.get(`/api/notes/user/${query}`);
+  return response.data;
+};
+
+export const createNote = async (data) => {
+  const response = await api.post("/api/note", data);
+  return response.data;
+};
+
+export const updateNote = async (data) => {
+  const response = await api.put("/api/note", data);
+  return response.data;
+};

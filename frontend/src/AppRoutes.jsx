@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import NotesPage from "./pages/NotesPage";
+import SingleNotePage from "./pages/SingleNotePage";
 
 function AppRoutes() {
   return (
@@ -10,7 +11,7 @@ function AppRoutes() {
         <Route index element={<NotesPage />} />
         <Route path="note">
           <Route path=":id" element={<div>NOTE</div>} />
-          <Route path="create" element={<div>Create</div>} />
+          <Route path="create" element={<SingleNotePage />} />
         </Route>
       </Route>
     </Routes>
