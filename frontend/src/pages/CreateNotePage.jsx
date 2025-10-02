@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { createNote } from "../utils/api";
 
-function SingleNotePage() {
+function CreateNotePage() {
   const [username, setUsername] = useState("");
   const [note, setNote] = useState("");
 
@@ -33,4 +33,4 @@ function SingleNotePage() {
   );
 }
 
-export default SingleNotePage;
+export default CreateNotePage;

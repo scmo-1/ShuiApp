@@ -11,7 +11,7 @@ export const getAllNotes = async () => {
 
 export const getNoteById = async (query) => {
   const response = await api.get(`/api/note/${query}`);
-  return response.data;
+  return response.data.data[0] || null;
 };
 
 export const getNoteByName = async (query) => {
@@ -24,7 +24,7 @@ export const createNote = async (data) => {
   return response.data;
 };
 
-export const updateNote = async (data) => {
-  const response = await api.put("/api/note", data);
+export const updateNote = async (query, data) => {
+  const response = await api.put(`/api/note/${query}`, { note: data });
   return response.data;
 };

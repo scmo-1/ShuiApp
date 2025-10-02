@@ -15,7 +15,8 @@ provider:
   httpApi:
     cors:
       allowedOrigins:
-        - "*"
+        - http://localhost:5173
+        - https://87ua2ygez2.execute-api.eu-north-1.amazonaws.com
       allowedHeaders:
         - Content-Type
         - Authorization
