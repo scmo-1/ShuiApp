@@ -2,6 +2,7 @@ import React from "react";
 import Note from "../components/Note";
 import { getAllNotes, createNote } from "../utils/api";
 import { useEffect, useState } from "react";
+import { Search } from "lucide-react";
 
 function NotesPage() {
   const [items, setItems] = useState([]);
@@ -11,6 +12,12 @@ function NotesPage() {
 
   return (
     <>
+      <form action="submit">
+        <button>
+          <Search />
+        </button>
+        <input type="text" className="border-1 border-white" />
+      </form>
       <ul className="w-full flex flex-col gap-5 items-center">
         {items.length < 1 ? (
           <p>Loading</p>
