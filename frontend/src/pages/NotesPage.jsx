@@ -2,7 +2,7 @@ import React from "react";
 import Note from "../components/Note";
 import { getAllNotes, createNote } from "../utils/api";
 import { useEffect, useState } from "react";
-import { Search } from "lucide-react";
+import { Search, SquarePen } from "lucide-react";
 
 function NotesPage() {
   const [items, setItems] = useState([]);
@@ -39,8 +39,11 @@ function NotesPage() {
           ))
         )}
       </ul>
-      <a href="/note/create" className="border-2 border-white">
-        create
+      <a
+        href="/note/create"
+        className="bg-red-500 rounded-xl p-2 fixed bottom-5 right-5"
+      >
+        <SquarePen size={42} />
       </a>
     </>
   );
