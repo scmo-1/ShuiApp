@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 body {
-  background-color: rgb(1, 1, 57);
+  background-color: #a17f62;
   color: white;
   font-family: "Open Sans", sans-serif;
 }

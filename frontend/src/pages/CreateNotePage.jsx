@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { createNote } from "../utils/api";
+import Note from "../components/Note";
 
 function CreateNotePage() {
   const [username, setUsername] = useState("");
@@ -13,20 +14,24 @@ function CreateNotePage() {
     console.log(response);
   };
   return (
-    <section className="bg-blue-700">
+    <section className="w-full">
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <textarea
-          name="note"
-          className="border-2 border-white"
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-        ></textarea>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          className="border-2 border-white"
-        />
+        <Note>
+          <textarea
+            name="note"
+            className=""
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="Skriv din anteckning"
+          ></textarea>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Ditt namn"
+            className="border-b-2 border-black mt-auto"
+          />
+        </Note>
         <button type="submit">Create</button>
       </form>
     </section>

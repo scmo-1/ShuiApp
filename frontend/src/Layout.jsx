@@ -6,7 +6,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <main className="pt-25 px-3  flex flex-col items-center min-h-screen">
+      <main className="pt-40 px-3  flex flex-col items-center min-h-screen">
         <Outlet />
       </main>
     </>

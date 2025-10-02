@@ -18,18 +18,22 @@ function NotesPage() {
         </button>
         <input type="text" className="border-1 border-white" />
       </form>
-      <ul className="w-full flex flex-col gap-5 items-center">
+      <ul className="w-full grid grid-cols-1 gap-15 items-center">
         {items.length < 1 ? (
           <p>Loading</p>
         ) : (
           items.data.map((item) => (
-            <li key={item.noteId}>
+            <li key={item.noteId} className="block w-full">
               <a href={`/note/${item.noteId}`}>
-                <Note
-                  note={item.note}
-                  username={item.username}
-                  date={item.createdAt}
-                />
+                <Note>
+                  <p className="">{item.note}</p>
+                  <div className="flex mt-auto justify-between">
+                    <span>- {item.username}</span>
+                    <span>
+                      {new Date(item.createdAt).toLocaleDateString("sv-SE")}
+                    </span>
+                  </div>
+                </Note>
               </a>
             </li>
           ))
