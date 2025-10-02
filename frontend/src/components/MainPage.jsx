@@ -1,6 +1,4 @@
 import React from "react";
-
-import { getAllNotes } from "../utils/api";
 import { useEffect, useState } from "react";
 import { Search, SquarePen } from "lucide-react";
 import EditNoteModal from "./EditNoteModal";
@@ -14,13 +12,6 @@ function MainPage() {
 
   return (
     <section className="w-full flex flex-col items-center max-w-md md:max-w-3xl lg:max-w-6xl mx-auto relative">
-      <form action="submit" className="mb-10">
-        <button>
-          <Search />
-        </button>
-        <input type="text" className="border-1 border-white" />
-      </form>
-
       <MainPageContent open={setEditOpen} note={setEditModal} />
 
       <button
