@@ -1,12 +1,13 @@
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from "./AppRoutes";
+import Header from "./components/Header";
+import MainPage from "./components/MainPage";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
+      <Header />
+      <main className="pt-40 px-3  flex flex-col items-center min-h-screen">
+        <MainPage />
+      </main>
     </>
   );
 }
