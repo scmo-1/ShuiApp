@@ -11,7 +11,7 @@ function SearchBar({ handleSearch }) {
     <form onSubmit={(e) => handleSearch(e, query)} className="">
       <div className="relative flex items-center gap-3  outline-2 outline-black rounded-full">
         <motion.label
-          for="name"
+          htmlFor="name"
           className="absolute z-2 left-4 bg-[#846b56] text-black"
           initial={{ y: 0 }}
           animate={focus ? { y: -24 } : { y: 0 }}
