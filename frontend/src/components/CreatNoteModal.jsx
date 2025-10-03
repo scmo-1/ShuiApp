@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "./Modal";
 import { useState, useEffect } from "react";
 import Note from "./Note";
+import SubmitButton from "./SubmitButton";
 
 function CreateNoteModal({ open, onClose }) {
   const [username, setUsername] = useState("");
@@ -15,7 +16,10 @@ function CreateNoteModal({ open, onClose }) {
   };
   return (
     <Modal open={open} onClose={onClose}>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center gap-5"
+      >
         <Note>
           <div className="flex flex-col h-80 w-70 md:h-100 md:w-90 mt-10">
             <textarea
@@ -33,7 +37,7 @@ function CreateNoteModal({ open, onClose }) {
             />
           </div>
         </Note>
-        <button type="submit">Skapa</button>
+        <SubmitButton className="px-10 py-2">Skapa</SubmitButton>
       </form>
     </Modal>
   );
