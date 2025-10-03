@@ -1,7 +1,13 @@
 import React from "react";
 import { useState } from "react";
 
-function HoverButton({ children, className, color = "", onClick }) {
+function HoverButton({
+  children,
+  className,
+  color = "",
+  onClick,
+  type = "button",
+}) {
   const [hovered, setHovered] = useState(false);
 
   const colors = {
@@ -11,7 +17,7 @@ function HoverButton({ children, className, color = "", onClick }) {
 
   return (
     <button
-      type="submit"
+      type={type}
       className={`  text-center rounded-full text-white  cursor-pointer overflow-hidden ${className} ${colors[color]} transition ease-in-out duration-300`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

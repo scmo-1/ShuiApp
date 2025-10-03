@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://9u6wlfi067.execute-api.eu-north-1.amazonaws.com",
+  baseURL: "https://j68ny3c8l8.execute-api.eu-north-1.amazonaws.com",
 });
 
 export const getAllNotes = async () => {
@@ -10,7 +10,7 @@ export const getAllNotes = async () => {
 };
 
 export const deleteNoteById = async (query) => {
-  const response = await api.get(`/api/note/${query}`);
+  const response = await api.delete(`/api/note/${query}`);
   return response.data || null;
 };
 

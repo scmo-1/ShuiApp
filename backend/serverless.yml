@@ -16,7 +16,6 @@ provider:
     cors:
       allowedOrigins:
         - http://localhost:5173
-        - https://87ua2ygez2.execute-api.eu-north-1.amazonaws.com
       allowedHeaders:
         - Content-Type
         - Authorization
@@ -24,6 +23,7 @@ provider:
         - GET
         - POST
         - PUT
+        - DELETE
 
   # Uncomment to easily set up a custom domain. Read the docs for more details:
   # https://www.serverless.com/framework/docs/providers/aws/guide/domains
@@ -37,7 +37,7 @@ functions:
           path: /api/notes
           method: GET
 
-  deleteByNoteId:
+  deleteNoteById:
     handler: functions/deleteNoteById/index.handler
     events:
       - httpApi:

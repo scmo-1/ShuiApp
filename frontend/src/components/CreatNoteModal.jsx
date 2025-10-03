@@ -51,7 +51,7 @@ function CreateNoteModal({ open, onClose }) {
               />
             </div>
           </Note>
-          <HoverButton className="px-10 py-2" color="green">
+          <HoverButton type="submit" className="px-10 py-2" color="green">
             Skapa
           </HoverButton>
         </form>
