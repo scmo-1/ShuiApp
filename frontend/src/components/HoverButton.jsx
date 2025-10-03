@@ -12,12 +12,12 @@ function HoverButton({ children, className, color = "", onClick }) {
   return (
     <button
       type="submit"
-      className={` relative text-center rounded-full text-white  cursor-pointer overflow-hidden ${className} ${colors[color]} transition ease-in-out duration-300`}
+      className={`  text-center rounded-full text-white  cursor-pointer overflow-hidden ${className} ${colors[color]} transition ease-in-out duration-300`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
     >
-      <div className="relative z-2">{children}</div>
+      {children}
     </button>
   );
 }

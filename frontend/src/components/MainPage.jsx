@@ -4,6 +4,7 @@ import { Search, SquarePen } from "lucide-react";
 import EditNoteModal from "./EditNoteModal";
 import CreateNoteModal from "./CreatNoteModal";
 import MainPageContent from "./MainPageContent";
+import HoverButton from "./HoverButton";
 
 function MainPage() {
   const [editModal, setEditModal] = useState([]);
@@ -14,12 +15,13 @@ function MainPage() {
     <section className="w-full flex flex-col items-center max-w-md md:max-w-3xl lg:max-w-6xl mx-auto relative">
       <MainPageContent open={setEditOpen} note={setEditModal} />
 
-      <button
+      <HoverButton
         onClick={() => setCreateModalOpen(true)}
-        className="bg-red-500 rounded-xl p-2 fixed bottom-5 right-5"
+        className=" p-4 fixed bottom-5 right-5"
+        color="green"
       >
         <SquarePen size={42} />
-      </button>
+      </HoverButton>
       <EditNoteModal
         note={editModal}
         open={editOpen}
