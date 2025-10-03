@@ -15,10 +15,10 @@ function SearchBar({ handleSearch }) {
       }}
       className=""
     >
-      <div className="relative flex items-center gap-3  outline-2 outline-black rounded-full">
+      <div className="relative flex items-center gap-3  outline-2 outline-white rounded-full">
         <motion.label
           htmlFor="name"
-          className="absolute z-2 left-4 bg-[#846b56] text-black"
+          className="absolute z-2 left-4 bg-[#484039] text-white"
           initial={{ y: 0 }}
           animate={focus ? { y: -24 } : { y: 0 }}
         >
@@ -33,8 +33,8 @@ function SearchBar({ handleSearch }) {
           onBlur={() => setFocus(false)}
           className="focus:outline-none  px-4 py-2 rounded-full"
         />
-        <button className="bg-black rounded-full p-3 cursor-pointer">
-          <Search size={20} />
+        <button className="bg-white rounded-full p-3 cursor-pointer">
+          <Search size={20} color="#484039" strokeWidth={3} />
         </button>
       </div>
     </form>

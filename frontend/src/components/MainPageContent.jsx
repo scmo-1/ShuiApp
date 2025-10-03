@@ -5,6 +5,7 @@ import { getAllNotes, getNoteByName } from "../utils/api";
 import SearchBar from "./SearchBar";
 import { motion } from "motion/react";
 import { Bouncy } from "ldrs/react";
+import DropDownSelect from "./DropDownSelect";
 import "ldrs/react/Bouncy.css";
 
 function MainPageContent({ open, note }) {
@@ -51,17 +52,12 @@ function MainPageContent({ open, note }) {
   return (
     <section className="w-full flex flex-col gap-5 items-center">
       <SearchBar handleSearch={handleSearch} />
-      <div>
-        <label htmlFor="sort">Sortera:</label>
-        <select
-          id="sort"
-          value={sortItems}
-          onChange={(e) => setSortItems(e.target.value)}
-        >
-          <option value="desc">Nyast först</option>
-          <option value="asc">Äldst först</option>
-        </select>
-      </div>
+      <DropDownSelect
+        sortItems={sortItems}
+        setSortItems={setSortItems}
+        desc="desc"
+        asc="asc"
+      />
 
       {loading ? (
         <Bouncy size="45" speed="1.75" color="black" />
