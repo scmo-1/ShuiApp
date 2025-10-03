@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
 import Note from "./Note";
-import SubmitButton from "./SubmitButton";
-import { updateNote } from "../utils/api";
+import HoverButton from "./HoverButton";
+import { updateNote, deleteNoteById } from "../utils/api";
 
 function EditNoteModal({ note, open, onClose }) {
   const [noteText, setNoteText] = useState("");
@@ -22,7 +22,6 @@ function EditNoteModal({ note, open, onClose }) {
       setUpdated(true);
     } catch (error) {
       console.error("Error updating note:", error);
-      alert("Kunde inte uppdatera anteckning. Försök igen.");
     }
   };
 
@@ -53,17 +52,16 @@ function EditNoteModal({ note, open, onClose }) {
               </div>
             </div>
           </Note>
-          <SubmitButton className="py-2 px-5">Uppdatera</SubmitButton>
+          <HoverButton color="green" className="py-2 px-5">
+            Uppdatera
+          </HoverButton>
         </form>
       ) : (
         <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 border-2 border-black bg-white text-black p-6 rounded shadow-lg flex flex-col items-center gap-4">
           <p className="font-semibold text-lg">Anteckning ändrad!</p>
-          <button
-            onClick={handleClose}
-            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
-          >
+          <HoverButton onClick={handleClose} className="px-4 py-2" color="red">
             Stäng
-          </button>
+          </HoverButton>
         </div>
       )}
     </Modal>

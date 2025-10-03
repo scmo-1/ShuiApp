@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import Note from "./Note";
-import SubmitButton from "./SubmitButton";
+import HoverButton from "./HoverButton";
 import { createNote } from "../utils/api";
 
 function CreateNoteModal({ open, onClose }) {
@@ -19,7 +19,6 @@ function CreateNoteModal({ open, onClose }) {
       setNote("");
     } catch (error) {
       console.error("Error creating note:", error);
-      alert("Kunde inte skapa anteckning. Försök igen.");
     }
   };
 
@@ -52,17 +51,16 @@ function CreateNoteModal({ open, onClose }) {
               />
             </div>
           </Note>
-          <SubmitButton className="px-10 py-2">Skapa</SubmitButton>
+          <HoverButton className="px-10 py-2" color="green">
+            Skapa
+          </HoverButton>
         </form>
       ) : (
         <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 border-2 border-black bg-white text-black p-6 rounded shadow-lg flex flex-col items-center gap-4">
           <p className="font-semibold text-lg">Anteckning skapad!</p>
-          <button
-            onClick={handleClose}
-            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
-          >
+          <HoverButton onClick={handleClose} className="py-2 px-10" color="red">
             Stäng
-          </button>
+          </HoverButton>
         </div>
       )}
     </Modal>
