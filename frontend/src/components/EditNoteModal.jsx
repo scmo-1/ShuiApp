@@ -8,37 +8,49 @@ function EditNoteModal({ note, open, onClose }) {
   const [noteText, setNoteText] = useState("");
   const [updated, setUpdated] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (open && note) {
       setNoteText(note.note);
       setUpdated(false);
       setDeleted(false);
+      setError("");
     }
   }, [open, note]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+
     try {
       await updateNote(note.noteId, noteText);
       setUpdated(true);
-    } catch (error) {
-      console.error("Error updating note:", error);
+    } catch (err) {
+      console.error("Error updating note:", err);
+      if (err.response && err.response.status === 400) {
+        setError("Fel i anteckningen. Kontrollera att den är korrekt ifylld.");
+      } else {
+        setError("Ett oväntat fel uppstod. Försök igen senare.");
+      }
     }
   };
 
   const handleDelete = async () => {
+    setError("");
     try {
       await deleteNoteById(note.noteId);
       setDeleted(true);
-    } catch (error) {
-      console.error("Error deleting note:", error);
+    } catch (err) {
+      console.error("Error deleting note:", err);
+      setError("Ett oväntat fel uppstod. Försök igen senare.");
     }
   };
 
   const handleClose = () => {
     setUpdated(false);
     setDeleted(false);
+    setError("");
     onClose();
   };
 
@@ -56,6 +68,7 @@ function EditNoteModal({ note, open, onClose }) {
                 onChange={(e) => setNoteText(e.target.value)}
                 className="w-full h-full p-2 border-neutral-600 rounded focus:outline-none border-dashed border-1 resize-none"
               />
+              {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
               <div className="flex mt-auto justify-between text-sm text-gray-600">
                 <span>- {note.username}</span>
                 <span>

@@ -8,22 +8,36 @@ function CreateNoteModal({ open, onClose }) {
   const [username, setUsername] = useState("");
   const [note, setNote] = useState("");
   const [created, setCreated] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setError("");
+
     try {
       const formData = { username, note };
       await createNote(formData);
+
       setCreated(true);
       setUsername("");
       setNote("");
-    } catch (error) {
-      console.error("Error creating note:", error);
+    } catch (err) {
+      console.error("Error creating note:", err);
+
+      // Generellt felmeddelande för 400
+      if (err.response && err.response.status === 400) {
+        setError(
+          "Fel i anteckning och/eller namn. Kontrollera att fälten är korrekt ifyllda."
+        );
+      } else {
+        setError("Ett oväntat fel uppstod. Försök igen senare.");
+      }
     }
   };
 
   const handleClose = () => {
     setCreated(false);
+    setError("");
     onClose();
   };
 
@@ -40,7 +54,7 @@ function CreateNoteModal({ open, onClose }) {
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Skriv din anteckning"
-                className="w-full h-full p-2  border-neutral-600 rounded focus:outline-none border-dashed border-1 resize-none"
+                className="w-full h-full p-2 border-neutral-600 rounded focus:outline-none border-dashed border-1 resize-none"
               />
               <input
                 type="text"
@@ -49,6 +63,7 @@ function CreateNoteModal({ open, onClose }) {
                 placeholder="Ditt namn"
                 className="border-b-2 border-dashed border-black mt-2 focus:outline-none p-1"
               />
+              {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
             </div>
           </Note>
           <HoverButton type="submit" className="px-10 py-2" color="green">
