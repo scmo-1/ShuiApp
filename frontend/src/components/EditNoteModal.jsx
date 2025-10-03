@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "./Modal";
 import { useState, useEffect } from "react";
 import Note from "./Note";
+import SubmitButton from "./SubmitButton";
 
 function EditNoteModal({ note, open, onClose }) {
   const [noteText, setNoteText] = useState("");
@@ -17,7 +18,10 @@ function EditNoteModal({ note, open, onClose }) {
   };
   return (
     <Modal open={open} onClose={onClose}>
-      <form onSubmit={handleSumbit}>
+      <form
+        onSubmit={handleSumbit}
+        className="flex flex-col gap-5 items-center"
+      >
         <Note>
           <div className="flex flex-col h-80 w-70 md:h-100 md:w-90 mt-10">
             <textarea
@@ -33,7 +37,7 @@ function EditNoteModal({ note, open, onClose }) {
             </div>
           </div>
         </Note>
-        <button type="submit">Uppdatera</button>
+        <SubmitButton className="py-2 px-5">Uppdatera</SubmitButton>
       </form>
     </Modal>
   );
