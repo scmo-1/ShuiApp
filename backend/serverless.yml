@@ -37,12 +37,12 @@ functions:
           path: /api/notes
           method: GET
 
-  getNoteByNoteId:
-    handler: functions/getNoteByNoteId/index.handler
+  deleteByNoteId:
+    handler: functions/deleteNoteById/index.handler
     events:
       - httpApi:
           path: /api/note/{noteId}
-          method: GET
+          method: DELETE
 
   postNote:
     handler: functions/postNote/index.handler
