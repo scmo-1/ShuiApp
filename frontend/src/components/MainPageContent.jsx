@@ -9,7 +9,6 @@ function MainPageContent({ open, note }) {
   const [items, setItems] = useState([]);
   const [sortItems, setSortItems] = useState("desc");
   const [loading, setLoading] = useState(false);
-  const [hovered, setHovered] = useState(false);
 
   const fetchNotes = async (search = "") => {
     setLoading(true);
