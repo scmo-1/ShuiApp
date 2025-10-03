@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import { useState, useEffect } from "react";
 import Note from "./Note";
 import SubmitButton from "./SubmitButton";
+import { createNote } from "../utils/api";
 
 function CreateNoteModal({ open, onClose }) {
   const [username, setUsername] = useState("");
