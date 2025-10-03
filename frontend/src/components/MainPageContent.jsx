@@ -4,6 +4,8 @@ import Note from "./Note";
 import { getAllNotes, getNoteByName } from "../utils/api";
 import SearchBar from "./SearchBar";
 import { motion } from "motion/react";
+import { Bouncy } from "ldrs/react";
+import "ldrs/react/Bouncy.css";
 
 function MainPageContent({ open, note }) {
   const [items, setItems] = useState([]);
@@ -62,7 +64,7 @@ function MainPageContent({ open, note }) {
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <Bouncy size="45" speed="1.75" color="black" />
       ) : sortedNotes.length < 1 ? (
         <p>Inga anteckningar hittades</p>
       ) : (
@@ -105,3 +107,5 @@ function MainPageContent({ open, note }) {
 }
 
 export default MainPageContent;
+
+// Default values shown
