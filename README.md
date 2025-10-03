@@ -1,5 +1,7 @@
 # Individuell examination - Shui
 
+Site: http://shui-notes-app.s3-website.eu-north-1.amazonaws.com
+
 ## Instruktioner
 
 Du ska bygga en enkel anslagstavla där det går att posta meddelanden. Det ska gå och se alla meddelanden samt posta ett nytt meddelande där man anger ett användarnamn. Se längre ner vad ett meddelande ska innehålla.
