@@ -15,7 +15,7 @@ provider:
   httpApi:
     cors:
       allowedOrigins:
-        - http://localhost:5173
+        - http://shui-notes-app.s3-website.eu-north-1.amazonaws.com
       allowedHeaders:
         - Content-Type
         - Authorization
