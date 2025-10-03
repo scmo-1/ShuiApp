@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import Note from "./Note";
 import { getAllNotes, getNoteByName } from "../utils/api";
 import SearchBar from "./SearchBar";
+import { motion } from "motion/react";
 
 function MainPageContent({ open, note }) {
   const [items, setItems] = useState([]);
   const [sortItems, setSortItems] = useState("desc");
   const [loading, setLoading] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   const fetchNotes = async (search = "") => {
     setLoading(true);
@@ -67,9 +69,20 @@ function MainPageContent({ open, note }) {
       ) : (
         <ul className="w-full grid grid-cols-1 gap-15 items-center md:grid-cols-2 lg:grid-cols-3">
           {sortedNotes.map((item) => (
-            <li
+            <motion.li
+              initial={{ rotate: 0, scale: 1 }}
+              whileHover={{
+                rotate: 0.6,
+                scale: 1.03,
+              }}
+              transition={{
+                type: "spring",
+                damping: 15,
+                mass: 1,
+                duration: 0.2,
+              }}
               key={item.noteId}
-              className="block w-full"
+              className="block w-full cursor-pointer"
               onClick={() => {
                 note(item);
                 open(true);
@@ -84,7 +97,7 @@ function MainPageContent({ open, note }) {
                   </span>
                 </div>
               </Note>
-            </li>
+            </motion.li>
           ))}
         </ul>
       )}
