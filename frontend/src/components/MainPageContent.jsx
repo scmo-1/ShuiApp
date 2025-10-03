@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 
 function MainPageContent({ open, note }) {
   const [items, setItems] = useState([]);
+  const [sortItems, setSortItems] = useState("desc");
   const [loading, setLoading] = useState(false);
 
   const fetchNotes = async (search = "") => {
@@ -33,6 +34,12 @@ function MainPageContent({ open, note }) {
     fetchNotes();
   }, []);
 
+  const sortedNotes = [...items].sort((a, b) => {
+    return sortItems === "desc"
+      ? new Date(b.createdAt) - new Date(a.createdAt)
+      : new Date(a.createdAt) - new Date(b.createdAt);
+  });
+
   const handleSearch = async (e, query) => {
     e.preventDefault();
     fetchNotes(query);
@@ -41,14 +48,25 @@ function MainPageContent({ open, note }) {
   return (
     <section className="w-full flex flex-col gap-5 items-center">
       <SearchBar handleSearch={handleSearch} />
+      <div>
+        <label htmlFor="sort">Sortera:</label>
+        <select
+          id="sort"
+          value={sortItems}
+          onChange={(e) => setSortItems(e.target.value)}
+        >
+          <option value="desc">Nyast först</option>
+          <option value="asc">Äldst först</option>
+        </select>
+      </div>
 
       {loading ? (
         <p>Loading...</p>
-      ) : items.length < 1 ? (
+      ) : sortedNotes.length < 1 ? (
         <p>Inga anteckningar hittades</p>
       ) : (
         <ul className="w-full grid grid-cols-1 gap-15 items-center md:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
+          {sortedNotes.map((item) => (
             <li
               key={item.noteId}
               className="block w-full"
