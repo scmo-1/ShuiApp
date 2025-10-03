@@ -8,7 +8,9 @@ function Modal({ open, onClose, children }) {
           className="fixed inset-0 z-99 flex items-center justify-center bg-black/50 backdrop-blur-sm"
           onClick={onClose}
         >
-          <div onClick={(e) => e.stopPropagation()}>{children}</div>
+          <div onClick={(e) => e.stopPropagation()} className="relative">
+            {children}
+          </div>
         </div>
       )}
     </>

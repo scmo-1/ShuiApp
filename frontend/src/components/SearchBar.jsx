@@ -8,7 +8,13 @@ function SearchBar({ handleSearch }) {
   const [focus, setFocus] = useState(false);
 
   return (
-    <form onSubmit={(e) => handleSearch(e, query)} className="">
+    <form
+      onSubmit={(e) => {
+        handleSearch(e, query);
+        setQuery("");
+      }}
+      className=""
+    >
       <div className="relative flex items-center gap-3  outline-2 outline-black rounded-full">
         <motion.label
           htmlFor="name"
